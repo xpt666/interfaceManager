@@ -1,4 +1,5 @@
 # interfaceManager
+<<<<<<< HEAD
 
 This template should help get you started developing with Vue 3 in Vite.
 
@@ -27,3 +28,6 @@ npm run dev
 ```sh
 npm run build
 ```
+=======
+字节青训营接口管理平台
+>>>>>>> 21609679e2fa7462da727d38178fd0d3465ec0dd
