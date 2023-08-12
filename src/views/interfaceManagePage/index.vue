@@ -17,7 +17,7 @@
                     <a-menu-item key="2">nav 2</a-menu-item>
                     <a-menu-item key="3">nav 3</a-menu-item>
                 </a-menu>
-            </a-layout-header> -->
+                </a-layout-header> -->
                 <a-layout>
                     <a-layout-sider width="200" style="background: #fff">
                         <a-menu mode="inline" v-model:selectedKeys="selectedKeys2" v-model:openKeys="openKeys"
@@ -58,78 +58,78 @@
             <a-modal v-model:visible="dialogVisible">
                 <p>Some contents...</p>
             </a-modal>
-            <Dialog :display="visable"/>
+            <Dialog  ></Dialog>
         </div>
     </div>
 </template>
 <script setup>
-import { reactive, ref } from 'vue'
-import { PlusOutlined, SketchOutlined } from '@ant-design/icons-vue';
-import Dialog from '../../components/dialog.vue'
-const selectKey = ref(['1']);
-const httpWaySelect = ref('get')
-const tabKey = ref('1')
-const dialogVisible = ref(false)
-const visable = ref('none')
-const interfaceList = reactive(
-    [{
-        name: '接口1',
-        key: 'id',
-        value: '123',
-        description: 'id'
-    },
-    {
-        name: '接口2',
-        key: 'id',
-        value: '123',
-        description: 'id'
-    }]
-)
-const columns = [
-    {
-        title: 'Key',
-        dataIndex: 'key',
-        key: 'key',
-    },
-    {
-        title: 'Value',
-        dataIndex: 'value',
-        key: 'value',
-    },
-    {
-        title: 'Description',
-        dataIndex: 'description',
-        key: 'description',
-    },
-];
-const data = [
-    {
-        key: 'id',
-        value: '123',
-        description: '用户id',
-    },
-    {
-        key: 'name',
-        value: 'xpt',
-        description: '用户名字',
-    },
-]
-const rowSelection = {
-    onChange: (selectedRowKeys, selectedRows) => {
-        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-    },
-    onSelect: (record, selected, selectedRows) => {
-        console.log(record, selected, selectedRows);
-    },
-    onSelectAll: (selected, selectedRows, changeRows) => {
-        console.log(selected, selectedRows, changeRows);
-    },
-};
-function openDialog(event,idx) {
-    console.log(event,idx)
-    // dialogVisible.value = true
-    visable.value = 'block'
-}
+    import { reactive, ref } from 'vue'
+    import { PlusOutlined, SketchOutlined } from '@ant-design/icons-vue';
+    import Dialog from '../../components/dialog.vue'
+    const selectKey = ref(['1']);
+    const httpWaySelect = ref('get')
+    const tabKey = ref('1')
+    const dialogVisible = ref(false)
+    const visable = ref('none')
+    const interfaceList = reactive(
+        [{
+            name: '接口1',
+            key: 'id',
+            value: '123',
+            description: 'id'
+        },
+        {
+            name: '接口2',
+            key: 'id',
+            value: '123',
+            description: 'id'
+        }]
+    )
+    const columns = [
+        {
+            title: 'Key',
+            dataIndex: 'key',
+            key: 'key',
+        },
+        {
+            title: 'Value',
+            dataIndex: 'value',
+            key: 'value',
+        },
+        {
+            title: 'Description',
+            dataIndex: 'description',
+            key: 'description',
+        },
+    ];
+    const data = [
+        {
+            key: 'id',
+            value: '123',
+            description: '用户id',
+        },
+        {
+            key: 'name',
+            value: 'xpt',
+            description: '用户名字',
+        },
+    ]
+    const rowSelection = {
+        onChange: (selectedRowKeys, selectedRows) => {
+            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        },
+        onSelect: (record, selected, selectedRows) => {
+            console.log(record, selected, selectedRows);
+        },
+        onSelectAll: (selected, selectedRows, changeRows) => {
+            console.log(selected, selectedRows, changeRows);
+        },
+    };
+    function openDialog(event,idx) {
+        console.log(event,idx)
+        // dialogVisible.value = true
+        visable.value = 'block'
+    }
 </script>
 <style scoped lang="less">
 .container {
