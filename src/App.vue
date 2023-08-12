@@ -1,21 +1,21 @@
 <template>
-  <div class="apiInfo">
-    <ApiInfo> </ApiInfo>
+  <div class="App">
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import ApiInfo from "./components/ApiInfo.vue";
-
-
-export default {
-  components: {
-    ApiInfo
-  }
-    
-}
+  
 </script>
 
-<style>
-
+<style lang="scss">
+body{
+  padding: 0;
+  margin: 0;
+  display: block;
+  height: 100%;
+}
+.App{
+  height: 100%;
+}
 </style>
