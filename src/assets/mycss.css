@@ -1,0 +1,108 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+
+a{
+	color: #575759;
+	text-decoration: none;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #567b9a;
+}
+
+.navbar-inverse {
+  background-color: #fefefeee;
+  border-color: #ccc;
+  border-radius: 0px 0px 5px 5px;
+  margin-bottom: 0px;
+}
+.navbar-inverse .navbar-toggle {
+    border-color: #ccc;
+}
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fefefe;
+    background-color: #abbdbd;
+}
+.collapse li{
+	font-size: 16px;
+}
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #b1bef3;
+    background-color: transparent;
+}
+.navbar-inverse .navbar-toggle:focus, .navbar-inverse .navbar-toggle:hover {
+    background-color: #b1bef3;
+}
+.navbar-inverse .navbar-toggle, .navbar-inverse .navbar-toggle {
+    background-color: #d5d7dc;
+}
+.navbar-toggle>span{
+	color: #b6cfda;
+}
+.bigborder{
+	width: 95%;
+	border-radius: 7px;
+	margin: 0 auto;
+	box-shadow: 0px 2px 12px #abbdbd;
+	padding-bottom:100px ;
+}
+li{
+	list-style: none;
+}
+.tabcontainer{
+	width:350px;
+	height:490px;
+	background-color: #fefefe;
+	overflow:hidden;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1),0px 1px 3px rgba(0, 0, 0, 0.2);
+	display: flex;
+}
+.left-box{
+	width: 25%;
+	display:flex;
+	justify-content: center;
+}
+.left-box li{
+	padding: 10px 0;
+	line-height: 15px;
+	color: #aaa;
+	cursor:pointer;
+	transition: 0.2s ease-out;
+	display: flex;
+}
+.left-box .it{
+	font-size :15px;
+	margin-right: 10px;
+	padding-left:  5px;
+	width: 85px;
+	text-align: center;
+	height: 50px;
+	line-height: 34px;
+}
+.left-box li.active{
+	color: #333;
+	background-color: #eee;
+}
+.border-box{
+	height: 100%;
+	width: 1px;
+	background-color: #ddd;
+	margin-left: -7px;
+}
+.border-box .line{
+	width: 6px;
+	height: 50px;
+	background-color: #ddd;
+	margin-left: -2px;
+	transition: 0.3s ease-in-out;
+}
+.border-box .line2{
+	margin-top: 50px;
+}
+.right-box{
+	flex: 1;
+	height: 100%;
+	position: relative;
+}
