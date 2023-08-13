@@ -1,19 +1,21 @@
 <template>
-  <div class="App">
-    <router-view></router-view>
+  <div class="interfaceManagePage">
+    <index></index>
   </div>
-  
 </template>
 
 <script>
-export default {
+import index from "./views/interfaceManagePage/index.vue";
 
+
+export default {
+  components: {
+    index
+  }
+    
 }
 </script>
 
-<style lang="scss">
-body{
-  padding: 0;
-  margin: 0;
-}
+<style>
+
 </style>
