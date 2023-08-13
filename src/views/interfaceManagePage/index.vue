@@ -1,5 +1,5 @@
 <template>
-    <div class="container">
+    <div class="container" style="height: 100%;" @contextmenu="closeDialog">
         <div class="top">
             <div class="projectModule">
                 <div class="projectText">项目一</div>
@@ -23,7 +23,8 @@
                         <a-menu mode="inline" v-model:selectedKeys="selectedKeys2" v-model:openKeys="openKeys"
                             :style="{ height: '100%', borderRight: 0 }">
                             <a-menu-item v-for="(item, idx) in interfaceList" :key="idx"
-                                @contextmenu.prevent="openDialog($event,idx)">{{ item.name }}</a-menu-item>
+                                @contextmenu.stop="openDialog($event, idx)" 
+                                @contextmenu.prevent="openDialog($event, idx)">{{ item.name }}</a-menu-item>
                         </a-menu>
                     </a-layout-sider>
                     <a-layout style="padding: 0 24px 24px">
@@ -58,78 +59,96 @@
             <a-modal v-model:visible="dialogVisible">
                 <p>Some contents...</p>
             </a-modal>
-            <Dialog  ></Dialog>
+            <Dialog :display="visable" :x_offset="x_offset" :y_offset="y_offset" />
         </div>
     </div>
 </template>
 <script setup>
-    import { reactive, ref } from 'vue'
-    import { PlusOutlined, SketchOutlined } from '@ant-design/icons-vue';
-    import Dialog from '../../components/dialog.vue'
-    const selectKey = ref(['1']);
-    const httpWaySelect = ref('get')
-    const tabKey = ref('1')
-    const dialogVisible = ref(false)
-    const visable = ref('none')
-    const interfaceList = reactive(
-        [{
-            name: '接口1',
-            key: 'id',
-            value: '123',
-            description: 'id'
-        },
-        {
-            name: '接口2',
-            key: 'id',
-            value: '123',
-            description: 'id'
-        }]
-    )
-    const columns = [
-        {
-            title: 'Key',
-            dataIndex: 'key',
-            key: 'key',
-        },
-        {
-            title: 'Value',
-            dataIndex: 'value',
-            key: 'value',
-        },
-        {
-            title: 'Description',
-            dataIndex: 'description',
-            key: 'description',
-        },
-    ];
-    const data = [
-        {
-            key: 'id',
-            value: '123',
-            description: '用户id',
-        },
-        {
-            key: 'name',
-            value: 'xpt',
-            description: '用户名字',
-        },
-    ]
-    const rowSelection = {
-        onChange: (selectedRowKeys, selectedRows) => {
-            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-        },
-        onSelect: (record, selected, selectedRows) => {
-            console.log(record, selected, selectedRows);
-        },
-        onSelectAll: (selected, selectedRows, changeRows) => {
-            console.log(selected, selectedRows, changeRows);
-        },
-    };
-    function openDialog(event,idx) {
-        console.log(event,idx)
-        // dialogVisible.value = true
-        visable.value = 'block'
-    }
+import { reactive, ref, onMounted } from 'vue'
+import { PlusOutlined, SketchOutlined } from '@ant-design/icons-vue';
+import Dialog from '../../components/dialog.vue'
+const selectKey = ref(['1']);
+const httpWaySelect = ref('get')
+const tabKey = ref('1')
+const dialogVisible = ref(false)
+const visable = ref('none')
+const x_offset = ref('')
+const y_offset = ref('')
+const interfaceList = reactive(
+    [{
+        name: '接口1',
+        key: 'id',
+        value: '123',
+        description: 'id'
+    },
+    {
+        name: '接口2',
+        key: 'id',
+        value: '123',
+        description: 'id'
+    }]
+)
+const columns = [
+    {
+        title: 'Key',
+        dataIndex: 'key',
+        key: 'key',
+    },
+    {
+        title: 'Value',
+        dataIndex: 'value',
+        key: 'value',
+    },
+    {
+        title: 'Description',
+        dataIndex: 'description',
+        key: 'description',
+    },
+];
+const data = [
+    {
+        key: 'id',
+        value: '123',
+        description: '用户id',
+    },
+    {
+        key: 'name',
+        value: 'xpt',
+        description: '用户名字',
+    },
+]
+const rowSelection = {
+    onChange: (selectedRowKeys, selectedRows) => {
+        console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+    },
+    onSelect: (record, selected, selectedRows) => {
+        console.log(record, selected, selectedRows);
+    },
+    onSelectAll: (selected, selectedRows, changeRows) => {
+        console.log(selected, selectedRows, changeRows);
+    },
+};
+function openDialog(event, idx) {
+    console.log(event, idx)
+    x_offset.value = event.x + 'px';
+    y_offset.value = event.y + 'px';
+    visable.value = 'block'
+}
+document.addEventListener('click', function () {
+    if (visable.value == 'block')
+        visable.value = 'none'
+});
+function closeDialog(e) {
+    console.log(e, '-----------close')
+    if (visable.value == 'block')
+        visable.value = 'none'
+}
+// document.addEventListener('contextmenu', function (e) {
+//     if (visable.value == 'block' && !document.getElementsByName('#').contains(e.target))
+//         visable.value = 'none'
+// })
+
+
 </script>
 <style scoped lang="less">
 .container {
@@ -153,12 +172,12 @@
 
         .mockModule {
             margin-right: 24px;
-            border: 1px solid grey;
+            // border: 1px solid grey;
         }
 
         .importDocument {
             margin-right: 24px;
-            border: 1px solid grey;
+            // border: 1px solid grey;
         }
     }
 
